@@ -1,0 +1,13 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+@import "../../styles/theme";
+
+$primary-palette: map.get($angular-shop-theme, "primary");
+$primary-color: mat.get-color-from-palette($primary-palette, "default");
+
+p {
+  background-color: $primary-color;
+  color: #fff;
+  text-align: center;
+  padding: 16px 0;
+}
