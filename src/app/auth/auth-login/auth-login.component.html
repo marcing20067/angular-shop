@@ -1,0 +1,26 @@
+<section class="auth-login">
+  <h2>Logowanie</h2>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <p>
+      <mat-form-field class="field">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput>
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field class="field">
+        <mat-label>Hasło</mat-label>
+        <input formControlName="password" matInput>
+        <mat-icon matSuffix>key</mat-icon>
+      </mat-form-field>
+    </p>
+
+    <div>
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Zaloguj</button>
+      <a mat-button routerLink="/auth/signup">Stwórz konto</a>
+    </div>
+  </form>
+</section>
