@@ -1,0 +1,16 @@
+<aside></aside>
+<section class="products-search">
+  <h2>Produkty</h2>
+  <p>
+    <mat-form-field class="search">
+      <mat-label>Nazwa produktu</mat-label>
+      <input matInput>
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </p>
+
+  <div class="products">
+    <app-products-search-item class="products-item" *ngFor="let p of (products$ | async)" [product]="p">
+    </app-products-search-item>
+  </div>
+</section>
