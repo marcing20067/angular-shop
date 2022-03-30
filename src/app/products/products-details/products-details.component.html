@@ -1,0 +1,14 @@
+<section>
+  <h2>Szczegóły produktu</h2>
+  <div class="container">
+    <img class="image" src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" alt="">
+    <div *ngIf="product$ | async as product">
+      <h2>{{ product.name }}</h2>
+      <p>Cena: {{ product.price }}zł</p>
+      <div class="buttons">
+        <button mat-raised-button color="primary">Dodaj do koszyka</button>
+        <button mat-raised-button color="accent">Kup teraz</button>
+      </div>
+    </div>
+  </div>
+</section>

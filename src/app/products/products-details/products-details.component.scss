@@ -1,0 +1,21 @@
+.image {
+  width: 100%;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+  }
+
+  .image {
+    width: 35%;
+    margin-right: 32px;
+    max-width: 500px;
+  }
+}

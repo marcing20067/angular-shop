@@ -12,9 +12,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductsSearchItemComponent } from './products-search/products-search-item/products-search-item.component';
+import { ProductsDetailsComponent } from './products-details/products-details.component';
 
 @NgModule({
-  declarations: [ProductsSearchComponent, ProductsSearchItemComponent],
+  declarations: [ProductsSearchComponent, ProductsSearchItemComponent, ProductsDetailsComponent],
   imports: [
     CommonModule,
     ProductsRoutingModule,
