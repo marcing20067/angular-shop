@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { Product } from './product.model';
@@ -6,7 +7,11 @@ import { Product } from './product.model';
   providedIn: 'root',
 })
 export class ProductsService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
+
+  postProduct(product: Product) {
+    return of({});
+  }
 
   getProducts() {
     const response: Product[] = [

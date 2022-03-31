@@ -1,0 +1,29 @@
+<section>
+  <h2>Dodawanie produkt</h2>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field>
+        <mat-label>Nazwa produktu</mat-label>
+        <input matInput formControlName="name">
+        <mat-icon matSuffix>name</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>Kategoria</mat-label>
+        <mat-select formControlName="category">
+          <mat-option [value]="category" *ngFor="let category of categories">{{ category | titlecase }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>Cena</mat-label>
+        <input formControlName="price" type="number" matInput>
+        <mat-icon matSuffix>price</mat-icon>
+      </mat-form-field>
+    </p>
+    <button mat-raised-button color="primary" [disabled]="productForm.invalid">Dodaj</button>
+  </form>
+
+</section>
