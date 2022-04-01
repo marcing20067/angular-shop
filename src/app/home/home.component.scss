@@ -1,0 +1,17 @@
+.card {
+  max-width: 300px;
+  margin-bottom: 24px;
+}
+
+.products {
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 300px));
+  max-width: 100%;
+  display: grid;
+  column-gap: 32px;
+}
+
+.image {
+  height: 200px;
+  object-fit: cover;
+}
+
