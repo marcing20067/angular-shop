@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { SwiperModule } from 'swiper/angular';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { SwiperModule } from 'swiper/angular';
     CommonModule,
     HomeRoutingModule,
     MatCardModule,
-    MatButtonModule,
+    SharedModule,
     SwiperModule
   ]
 })

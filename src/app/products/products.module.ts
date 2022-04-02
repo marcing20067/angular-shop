@@ -10,12 +10,12 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { ProductsSearchItemComponent } from './products-search/products-search-item/products-search-item.component';
 import { ProductsDetailsComponent } from './products-details/products-details.component';
 import { ProductsCreateComponent } from './products-create/products-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatCardModule,
     MatSelectModule,
-    MatButtonModule,
+    SharedModule
   ],
   providers: [
     {
