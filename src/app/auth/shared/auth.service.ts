@@ -11,18 +11,12 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(user: User) {
-    const response = new HttpResponse({
-      body: {},
-    });
-
+    const response = {};
     return of(response);
   }
 
   signup(newUser: NewUser) {
-    const response = new HttpResponse({
-      body: {},
-    });
-
+    const response = {};
     return of(response);
   }
 }

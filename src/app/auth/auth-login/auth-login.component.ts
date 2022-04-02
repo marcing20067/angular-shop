@@ -23,7 +23,7 @@ export class AuthLoginComponent {
   onSubmit() {
     const loginData = this.loginForm.value;
     this.authService.login(loginData).subscribe(() => {
-      // this.router.navigate([])
+      this.router.navigate(['/products'])
     });
   }
 }
