@@ -9,8 +9,7 @@
     </mat-form-field>
   </p>
 
-  <div class="products">
-    <app-products-search-item class="products-item" *ngFor="let p of (products$ | async)" [product]="p">
-    </app-products-search-item>
+  <div class="products" *ngIf="products$ | async as products">
+    <app-products class="products-item" [products]="products"></app-products>
   </div>
 </section>

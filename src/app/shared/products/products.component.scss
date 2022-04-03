@@ -1,0 +1,24 @@
+$card-max-width: 350px;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.image {
+  aspect-ratio: 2/1;
+  object-fit: cover;
+  max-height: 200px;
+}
+
+.card {
+  max-width: $card-max-width;
+  margin-bottom: 24px;
+}
+
+.products {
+  grid-template-columns: repeat(auto-fill, minmax(min-content, $card-max-width));
+  width: 100%;
+  display: grid;
+  column-gap: 32px;
+}

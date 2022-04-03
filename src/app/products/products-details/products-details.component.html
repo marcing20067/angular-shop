@@ -1,8 +1,8 @@
 <section class="wrapper">
   <h2>Szczegóły produktu</h2>
-  <div class="container">
-    <img class="image" src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" alt="">
-    <div *ngIf="product$ | async as product">
+  <div class="container" *ngIf="product$ | async as product">
+    <img class="image" [src]="product.imageUrl" [alt]="product.name">
+    <div>
       <h2>{{ product.name }}</h2>
       <p>Cena: {{ product.price }}zł</p>
       <div class="buttons">
