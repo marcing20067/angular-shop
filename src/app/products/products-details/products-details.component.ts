@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs';
+import { CartService } from 'src/app/cart/cart.service';
+import { Product } from 'src/app/shared/products/product.model';
 import { ProductsService } from '../shared/products.service';
 
 @Component({
@@ -7,13 +10,29 @@ import { ProductsService } from '../shared/products.service';
   templateUrl: './products-details.component.html',
   styleUrls: ['./products-details.component.scss'],
 })
-export class ProductsDetailsComponent {
+export class ProductsDetailsComponent implements OnInit {
   id = this.route.snapshot.params['id'];
-  product$ = this.productsService.getProduct(this.id);
+  product!: Product;
 
   constructor(
     private route: ActivatedRoute,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private cartService: CartService
   ) {}
 
+  ngOnInit() {
+    this.productsService
+      .getProduct(this.id)
+      .pipe(take(1))
+      .subscribe((product) => {
+        this.product = product;
+      });
+  }
+
+  onAdd(quantity: number) {
+    this.cartService.addItem({
+      ...this.product,
+      quantity,
+    });
+  }
 }

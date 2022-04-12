@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { take } from 'rxjs';
 import { AuthService } from '../shared/auth.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class AuthSignupComponent {
 
   onSubmit() {
     const signupData = this.signupForm.value;
-    this.authService.signup(signupData).subscribe(() => {
+    this.authService.signup(signupData).pipe(take(1)).subscribe(() => {
       this.router.navigate(['/auth/login']);
     });
   }

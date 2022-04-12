@@ -1,12 +1,22 @@
 <section class="wrapper">
   <h2>Szczegóły produktu</h2>
-  <div class="container" *ngIf="product$ | async as product">
-    <img class="image" [src]="product.imageUrl" [alt]="product.name">
+  <div class="container" *ngIf="product as p">
+    <img class="image" [src]="p.imageUrl" [alt]="p.name">
     <div>
-      <h2>{{ product.name }}</h2>
-      <p>Cena: {{ product.price }}zł</p>
+      <h2>{{ p.name }}</h2>
+      <p>Cena: {{ p.price | currency: undefined : '' }}zł</p>
       <div class="buttons">
-        <button mat-raised-button color="primary">Dodaj do koszyka</button>
+        <div class="add-container">
+
+          <button (click)="onAdd(+quantity.value)" mat-raised-button color="primary" class="add">Dodaj do
+            koszyka</button>
+          <mat-form-field class="quantity-field">
+            <mat-label>Ilość</mat-label>
+            <!-- <span matPrefix>+1 &nbsp;</span> -->
+            <input type="number" matInput value="1" #quantity>
+            <!-- <mat-icon matSuffix>mode_edit</mat-icon> -->
+          </mat-form-field>
+        </div>
         <button mat-raised-button color="accent">Kup teraz</button>
       </div>
     </div>

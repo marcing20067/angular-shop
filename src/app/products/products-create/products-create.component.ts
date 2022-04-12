@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { take } from 'rxjs';
 import { ProductsService } from '../shared/products.service';
 
 @Component({
@@ -22,8 +23,8 @@ export class ProductsCreateComponent {
 
   onSubmit() {
     const newProduct = this.productForm.value;
-    this.productsService.postProduct(newProduct).subscribe(() => {
-      
+    this.productsService.postProduct(newProduct).pipe(take(1)).subscribe(() => {
+
     });
   }
 }

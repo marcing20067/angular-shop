@@ -1,0 +1,5 @@
+<section class="wrapper">
+  <app-cart-item *ngFor="let c of cartItems$ | async" [cartItem]="c" (delete)="onDelete($event)"></app-cart-item>
+
+  <button mat-raised-button color="accent">Zapłać</button>
+</section>

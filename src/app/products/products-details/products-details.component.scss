@@ -5,7 +5,20 @@
 .buttons {
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 16px;
+}
+
+.add-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.quantity-field {
+  width: 75px;
+  margin-left: 16px;
+}
+
+.add {
+  flex-grow: 1;
 }
 
 @media (min-width: 768px) {

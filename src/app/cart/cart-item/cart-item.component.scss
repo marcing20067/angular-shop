@@ -1,0 +1,14 @@
+.mat-card {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-card-image {
+  object-fit: cover;
+}
+
+.container {
+  padding: 16px 16px 0 16px;
+}

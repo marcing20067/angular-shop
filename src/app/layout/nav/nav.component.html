@@ -1,3 +1,9 @@
 <mat-toolbar color="primary">
-  <span>Angular Shop</span>
+  <a routerLink="/home">AngularShop</a>
+  <span class="cart">
+    <span class="items">{{ quantity$ | async }}</span>
+    <a routerLink="/cart" mat-icon-button>
+      <mat-icon>shopping_cart</mat-icon>
+    </a>
+  </span>
 </mat-toolbar>
