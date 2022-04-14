@@ -14,6 +14,7 @@ import { ProductsCreateComponent } from './products-create/products-create.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { SharedModule } from '../shared/shared.module';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SharedModule } from '../shared/shared.module';
     MatInputModule,
     MatIconModule,
     MatSelectModule,
-    SharedModule
+    SharedModule,
+    MatPaginatorModule
   ],
   providers: [
     {
