@@ -1,5 +1,5 @@
 <aside></aside>
-<section class="wrapper products-search">
+<section class="wrapper">
   <h2>Produkty</h2>
   <p>
     <mat-form-field class="search">
@@ -9,12 +9,12 @@
     </mat-form-field>
   </p>
 
-  <div class="products" *ngIf="products$ | async as products">
-    <app-products class="products-item" [products]="products"></app-products>
+  <div *ngIf="products$ | async as products">
+    <app-products [products]="products"></app-products>
   </div>
 
-  <mat-paginator [pageIndex]="page" [length]="length" [pageSize]="itemsPerPage" [hidePageSize]="true" (page)="setPage($event)"
-    aria-label="Szukaj produktów">
+  <mat-paginator [pageIndex]="page" [length]="length" [pageSize]="itemsPerPage" [hidePageSize]="true"
+    (page)="setPage($event)" aria-label="Szukaj produktów">
   </mat-paginator>
 
 </section>
