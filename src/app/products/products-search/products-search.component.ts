@@ -12,6 +12,7 @@ import { ProductsService } from '../shared/products.service';
 export class ProductsSearchComponent {
   products$ = this.productsService.getProductsListener();
 
+  savedText = '';
   searchForm = this.fb.group({
     text: ['']
   })
@@ -28,6 +29,7 @@ export class ProductsSearchComponent {
 
   onSubmit() {
     this.page = 0;
+    this.savedText = this.searchForm.value.text;
     this.getProducts().subscribe()
   }
 
@@ -37,12 +39,11 @@ export class ProductsSearchComponent {
   }
 
   private getProducts() {
-    const text = this.searchForm.value.text;
     return this.productsService
       .getProducts({
         page: this.page,
         itemsPerPage: this.itemsPerPage,
-      }, text)
+      }, this.savedText)
       .pipe(
         tap(({ length }) => {
           this.length = length;
