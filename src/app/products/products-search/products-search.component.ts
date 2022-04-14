@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { tap } from 'rxjs';
 import { ProductsService } from '../shared/products.service';
@@ -11,14 +12,23 @@ import { ProductsService } from '../shared/products.service';
 export class ProductsSearchComponent {
   products$ = this.productsService.getProductsListener();
 
+  searchForm = this.fb.group({
+    text: ['']
+  })
+
   page = 0;
   itemsPerPage = 2;
   length!: number;
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private fb: FormBuilder, private productsService: ProductsService) {}
 
   ngOnInit() {
     this.getProducts().subscribe();
+  }
+
+  onSubmit() {
+    this.page = 0;
+    this.getProducts().subscribe()
   }
 
   setPage(e: PageEvent) {
@@ -27,11 +37,12 @@ export class ProductsSearchComponent {
   }
 
   private getProducts() {
+    const text = this.searchForm.value.text;
     return this.productsService
       .getProducts({
         page: this.page,
         itemsPerPage: this.itemsPerPage,
-      })
+      }, text)
       .pipe(
         tap(({ length }) => {
           this.length = length;

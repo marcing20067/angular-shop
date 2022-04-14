@@ -1,13 +1,15 @@
 <aside></aside>
 <section class="wrapper">
   <h2>Produkty</h2>
-  <p>
-    <mat-form-field class="search">
+
+  <form [formGroup]="searchForm" class="search-form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="search-input no-bottom">
       <mat-label>Nazwa produktu</mat-label>
-      <input matInput>
+      <input matInput formControlName="text">
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
-  </p>
+    <button [disabled]="searchForm.invalid" mat-flat-button color="primary" class="search-button">Szukaj</button>
+  </form>
 
   <div *ngIf="products$ | async as products">
     <app-products [products]="products"></app-products>

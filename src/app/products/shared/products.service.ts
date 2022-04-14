@@ -20,19 +20,34 @@ export class ProductsService {
     return this.products$.asObservable();
   }
 
-  getProducts(paginatorObj?: { page: number; itemsPerPage: number }) {
+  getProducts(
+    paginatorObj?: { page: number; itemsPerPage: number },
+    nameQuery?: string
+  ) {
+    let products = [...PRODUCTS];
+    let length = PRODUCTS.length;
+    console.log(nameQuery);
+    if (nameQuery) {
+      products = products.filter((p) =>
+        p.name.toLowerCase().includes(nameQuery.toLowerCase())
+      );
+      length = products.length;
+      console.log('=====');
+      console.log(products);
+    }
     if (paginatorObj) {
       const { page, itemsPerPage } = paginatorObj;
-      const length = PRODUCTS.length;
       const start = page * itemsPerPage;
       const end = start + itemsPerPage;
-      const products = PRODUCTS.slice(start, end);
-      this.products$.next(products);
-      return of({ length, products })
+      products = products.slice(start, end);
+      if(!nameQuery) {
+        length = PRODUCTS.length;
+      }
     }
-    const response = { length: PRODUCTS.length, products: [...PRODUCTS] };
-    this.products$.next(response.products);
-    return of(response);
+    console.log(PRODUCTS);
+console.log(products);
+    this.products$.next(products);
+    return of({ length, products });
   }
 
   getProduct(id: string) {
