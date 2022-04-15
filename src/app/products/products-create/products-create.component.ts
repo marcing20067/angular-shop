@@ -10,9 +10,9 @@ import { ProductsService } from '../shared/products.service';
 })
 export class ProductsCreateComponent {
   productForm = this.fb.group({
-    name: ['', Validators.required],
+    name: ['', [Validators.required, Validators.minLength(5)]],
     category: ['', Validators.required],
-    price: ['', Validators.required],
+    price: ['', [Validators.required, Validators.min(1)]],
   });
   categories = ['kategoria1', 'kategoria2'];
 

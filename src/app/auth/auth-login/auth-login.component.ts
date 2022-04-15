@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
+import { AuthValidators } from '../shared/auth-validators';
 import { AuthService } from '../shared/auth.service';
 
 @Component({
@@ -11,8 +12,8 @@ import { AuthService } from '../shared/auth.service';
 })
 export class AuthLoginComponent {
   loginForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required],
+    email: ['',  AuthValidators.email],
+    password: ['', AuthValidators.password],
   });
 
   constructor(
