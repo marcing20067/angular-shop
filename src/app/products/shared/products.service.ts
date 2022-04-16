@@ -26,7 +26,6 @@ export class ProductsService {
   ) {
     let products = [...PRODUCTS];
     let length = PRODUCTS.length;
-    console.log(nameQuery);
     if (nameQuery) {
       products = products.filter((p) =>
         p.name.toLowerCase().includes(nameQuery.toLowerCase())

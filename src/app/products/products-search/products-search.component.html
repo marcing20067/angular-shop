@@ -17,8 +17,8 @@
     <app-products [products]="products"></app-products>
   </div>
 
-  <mat-paginator [pageIndex]="page" [length]="length" [pageSize]="itemsPerPage" [hidePageSize]="true"
-    (page)="setPage($event)" aria-label="Szukaj produktów">
+  <mat-paginator *ngIf="!isLoading" [pageIndex]="page" [length]="length" [pageSize]="itemsPerPage" [hidePageSize]="true"
+    (page)="setPage($event)" class="paginator" aria-label="Szukaj produktów">
   </mat-paginator>
 
 </section>
