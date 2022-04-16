@@ -11,6 +11,7 @@ import { ProductsService } from '../shared/products.service';
   styleUrls: ['./products-details.component.scss'],
 })
 export class ProductsDetailsComponent implements OnInit {
+  isLoading = true;
   id = this.route.snapshot.params['id'];
   product!: Product;
 
@@ -26,6 +27,7 @@ export class ProductsDetailsComponent implements OnInit {
       .pipe(take(1))
       .subscribe((product) => {
         this.product = product;
+        this.isLoading = false;
       });
   }
 

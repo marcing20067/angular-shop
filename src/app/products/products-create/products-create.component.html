@@ -1,6 +1,7 @@
 <section class="wrapper">
   <h2>Dodawanie produkt</h2>
-  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
     <p>
       <mat-form-field>
         <mat-label>Nazwa produktu</mat-label>

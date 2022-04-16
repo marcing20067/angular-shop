@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { tap } from 'rxjs';
 import { HomeService } from './shared/home.service';
 
 @Component({
@@ -7,7 +8,10 @@ import { HomeService } from './shared/home.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  featuredProducts$ = this.homeService.getFeaturedProducts();
+  isLoading = true;
+  featuredProducts$ = this.homeService.getFeaturedProducts().pipe(tap(() => {
+    this.isLoading = false;
+  }));
   categories = ['kategoria1', 'kategoria2']
   constructor(private homeService: HomeService) { }
 }

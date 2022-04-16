@@ -2,6 +2,7 @@
   <app-home-slider></app-home-slider>
   <div class="wrapper">
     <h2>Polecane produkty</h2>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
     <div class="products" *ngIf="featuredProducts$ | async as products">
       <app-products class="card" [products]="products"></app-products>
     </div>

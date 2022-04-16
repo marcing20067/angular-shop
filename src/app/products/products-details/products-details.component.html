@@ -1,6 +1,7 @@
 <section class="wrapper">
   <h2>Szczegóły produktu</h2>
-  <div class="container" *ngIf="product as p">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <div class="container" *ngIf="!isLoading && product as p">
     <img class="image" [src]="p.imageUrl" [alt]="p.name">
     <div>
       <h2>{{ p.name }}</h2>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
-import { tap } from 'rxjs';
+import { take, tap } from 'rxjs';
 import { ProductsService } from '../shared/products.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { ProductsService } from '../shared/products.service';
   styleUrls: ['./products-search.component.scss'],
 })
 export class ProductsSearchComponent {
+  isLoading = true;
   products$ = this.productsService.getProductsListener();
 
   savedText = '';
@@ -24,21 +25,22 @@ export class ProductsSearchComponent {
   constructor(private fb: FormBuilder, private productsService: ProductsService) {}
 
   ngOnInit() {
-    this.getProducts().subscribe();
+    this.getProducts().pipe(take(1)).subscribe();
   }
 
   onSubmit() {
     this.page = 0;
     this.savedText = this.searchForm.value.text;
-    this.getProducts().subscribe()
+    this.getProducts().pipe(take(1)).subscribe()
   }
 
   setPage(e: PageEvent) {
     this.page = e.pageIndex;
-    this.getProducts().subscribe();
+    this.getProducts().pipe(take(1)).subscribe();
   }
 
   private getProducts() {
+    this.isLoading = true;
     return this.productsService
       .getProducts({
         page: this.page,
@@ -47,6 +49,7 @@ export class ProductsSearchComponent {
       .pipe(
         tap(({ length }) => {
           this.length = length;
+          this.isLoading = false;
         })
       );
   }

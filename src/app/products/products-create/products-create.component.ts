@@ -9,6 +9,7 @@ import { ProductsService } from '../shared/products.service';
   styleUrls: ['./products-create.component.scss'],
 })
 export class ProductsCreateComponent {
+  isLoading = false;
   productForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(5)]],
     category: ['', Validators.required],
@@ -22,9 +23,10 @@ export class ProductsCreateComponent {
   ) {}
 
   onSubmit() {
+    this.isLoading = true;
     const newProduct = this.productForm.value;
     this.productsService.postProduct(newProduct).pipe(take(1)).subscribe(() => {
-
+      this.isLoading = false;
     });
   }
 }

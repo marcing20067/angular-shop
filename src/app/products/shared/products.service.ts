@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, of } from 'rxjs';
+import { BehaviorSubject, delay, of } from 'rxjs';
 import { Product } from '../../shared/products/product.model';
 import { PRODUCTS } from './products';
 
@@ -13,7 +13,7 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   postProduct(product: Product) {
-    return of({});
+    return of({}).pipe(delay(300));
   }
 
   getProductsListener() {
@@ -32,26 +32,22 @@ export class ProductsService {
         p.name.toLowerCase().includes(nameQuery.toLowerCase())
       );
       length = products.length;
-      console.log('=====');
-      console.log(products);
     }
     if (paginatorObj) {
       const { page, itemsPerPage } = paginatorObj;
       const start = page * itemsPerPage;
       const end = start + itemsPerPage;
       products = products.slice(start, end);
-      if(!nameQuery) {
+      if (!nameQuery) {
         length = PRODUCTS.length;
       }
     }
-    console.log(PRODUCTS);
-console.log(products);
     this.products$.next(products);
-    return of({ length, products });
+    return of({ length, products }).pipe(delay(300));
   }
 
   getProduct(id: string) {
     const findedProduct = PRODUCTS.find((p) => p.id === id) || PRODUCTS[0];
-    return of(findedProduct);
+    return of(findedProduct).pipe(delay(300));
   }
 }

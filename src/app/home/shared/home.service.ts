@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { delay, of } from 'rxjs';
 import { Product } from 'src/app/shared/products/product.model';
 
 @Injectable({
@@ -40,6 +40,6 @@ export class HomeService {
           'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
       },
     ];
-    return of(products);
+    return of(products).pipe(delay(300));
   }
 }

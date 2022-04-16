@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { SwiperModule } from 'swiper/angular';
 import { SharedModule } from '../shared/shared.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
+    MatProgressSpinnerModule,
     MatCardModule,
     SharedModule,
     SwiperModule

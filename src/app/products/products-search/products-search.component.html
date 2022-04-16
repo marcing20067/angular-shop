@@ -11,7 +11,9 @@
     <button [disabled]="searchForm.invalid" mat-flat-button color="primary" class="search-button">Szukaj</button>
   </form>
 
-  <div *ngIf="products$ | async as products">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+  <div *ngIf="!isLoading && (products$ | async) as products">
     <app-products [products]="products"></app-products>
   </div>
 
