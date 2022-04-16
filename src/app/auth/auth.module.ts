@@ -8,7 +8,7 @@ import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/mat
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from '../shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AuthLoginComponent, AuthSignupComponent],
@@ -19,7 +19,7 @@ import { SharedModule } from '../shared/shared.module';
     MatInputModule,
     MatIconModule,
     ReactiveFormsModule,
-    SharedModule,
+    MatButtonModule
   ],
   providers: [
     {
