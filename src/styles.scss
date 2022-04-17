@@ -1,9 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@use "sass:map";
 @use "@angular/material" as mat;
 @include mat.core();
 
 @import "./app/shared/styles/theme";
 @include mat.all-component-themes($angular-shop-theme);
+
+$primary-palette: map.get($angular-shop-theme, "primary");
+$primary-color: mat.get-color-from-palette($primary-palette, "default");
+$warn-palette: map.get($angular-shop-theme, "warn");
+$warn-color: mat.get-color-from-palette($warn-palette, "default");
+
+.primary,
+.warn,
+.success {
+  color: #fff;
+}
+
+.primary {
+  background-color: $primary-color;
+}
+
+.warn {
+  background-color: $warn-color;
+}
+
+.success {
+  background-color: rgb(32, 178, 27);
+}
 
 html,
 body {

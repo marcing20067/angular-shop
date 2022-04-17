@@ -6,3 +6,11 @@ app-cart-item {
     margin: 0;
   }
 }
+
+.summary {
+  margin-top: 12px;
+
+  &-item:first-child {
+    margin-right: 12px;
+  }
+}

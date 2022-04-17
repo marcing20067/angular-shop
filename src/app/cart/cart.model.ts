@@ -7,4 +7,5 @@ export interface CartItem extends Product {
 export interface Cart {
   items: CartItem[];
   quantity: number;
+  price: number;
 }

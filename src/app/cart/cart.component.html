@@ -1,5 +1,15 @@
-<section class="wrapper">
-  <app-cart-item *ngFor="let c of cartItems$ | async" [cartItem]="c" (delete)="onDelete($event)"></app-cart-item>
+<section class="wrapper" *ngIf="cart$ | async as cart">
+  <ng-container *ngFor="let item of cart.items">
+    <app-cart-item *ngIf="item" [cartItem]="item" (delete)="onDelete($event)" (edit)="onEdit($event)">
+    </app-cart-item>
+  </ng-container>
 
+  <mat-divider></mat-divider>
+  <div class="summary">
+    <p class="summary-item">Wszystkie elementy: <span class="mat-body-strong">{{ cart.quantity }}</span></p>
+    <p class="summary-item">
+      Łączny koszt: <span class="mat-body-strong">{{ cart.price | currency: '' : ''}}zł</span>
+    </p>
+  </div>
   <button mat-raised-button color="accent">Zapłać</button>
 </section>

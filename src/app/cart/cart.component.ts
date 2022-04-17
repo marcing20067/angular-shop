@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { map } from 'rxjs';
 import { CartItem } from './cart.model';
 import { CartService } from './cart.service';
 
@@ -9,15 +8,15 @@ import { CartService } from './cart.service';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  cartItems$ = this.cartService.getCart().pipe(
-    map((cart) => {
-      return cart?.items;
-    })
-  );
+  cart$ = this.cartService.getCart()
 
   constructor(private cartService: CartService) {}
 
   onDelete(cartItem: CartItem) {
     this.cartService.deleteItem(cartItem);
+  }
+
+  onEdit(newCartItem: CartItem) {
+    this.cartService.editItem(newCartItem);
   }
 }

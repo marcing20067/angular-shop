@@ -1,12 +1,21 @@
-<mat-card class="mat-card">
+<mat-card class="mat-card" *ngIf="cartItem as c">
   <div class="container">
     <mat-card-title-group>
-      <mat-card-title>{{ cartItem.name }}</mat-card-title>
-      <mat-card-subtitle>{{ cartItem.price | currency: undefined : ''}}zł</mat-card-subtitle>
+      <mat-card-title>{{ c.name }}</mat-card-title>
     </mat-card-title-group>
+    <mat-card-content>
+      <p>
+        Cena: <span class="mat-body-strong">{{ c.price * c.quantity | currency: '' : '' }}zł</span>
+      </p>
+      
+      <mat-form-field class="quantity-form">
+        <mat-label>Ilość</mat-label>
+        <input type="number" matInput [formControl]="quantityControl" (blur)="onBlur()">
+      </mat-form-field>
+    </mat-card-content>
     <mat-card-actions>
       <button mat-button (click)="onDelete()">Usuń</button>
     </mat-card-actions>
   </div>
-  <img mat-card-lg-image class="mat-card-image" [src]="cartItem.imageUrl">
+  <img mat-card-lg-image class="mat-card-image" [src]="c.imageUrl">
 </mat-card>

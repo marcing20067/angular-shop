@@ -5,7 +5,7 @@
     <img class="image" [src]="p.imageUrl" [alt]="p.name">
     <div>
       <h2>{{ p.name }}</h2>
-      <p>Cena: {{ p.price | currency: undefined : '' }}zł</p>
+      <p>Cena: {{ p.price | currency: '' : '' }}zł</p>
       <div class="buttons">
         <div class="add-container">
 
