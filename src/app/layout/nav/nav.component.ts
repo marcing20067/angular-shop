@@ -10,9 +10,13 @@ import { CartService } from 'src/app/cart/cart.service';
 export class NavComponent {
   quantity$ = this.cartService.getCart().pipe(
     map((cart) => {
-      return cart ? cart.quantity : 0
+      if (!cart) {
+        return 0;
+      }
+
+      return cart.quantity > 99 ? '99+' : cart.quantity;
     })
   );
-  
+
   constructor(private cartService: CartService) {}
 }

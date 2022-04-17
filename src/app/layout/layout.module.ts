@@ -6,8 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-
-
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [NavComponent, FooterComponent],
@@ -16,8 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     RouterModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatBadgeModule,
   ],
-  exports: [NavComponent, FooterComponent]
+  exports: [NavComponent, FooterComponent],
 })
-export class LayoutModule { }
+export class LayoutModule {}

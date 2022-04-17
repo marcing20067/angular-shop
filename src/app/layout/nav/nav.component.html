@@ -1,9 +1,8 @@
 <mat-toolbar color="primary">
   <a routerLink="/home">AngularShop</a>
   <span class="cart">
-    <span class="items">{{ quantity$ | async }}</span>
     <a routerLink="/cart" mat-icon-button>
-      <mat-icon>shopping_cart</mat-icon>
+      <mat-icon class="cart-icon" [matBadge]="quantity$ | async" matBadgeColor="warn">shopping_cart</mat-icon>
     </a>
   </span>
 </mat-toolbar>
