@@ -14,13 +14,16 @@ import { ProductsCreateComponent } from './products-create/products-create.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { SharedModule } from '../shared/shared.module';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ProductsSaleComponent } from './products-sale/products-sale.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
     ProductsSearchComponent,
     ProductsDetailsComponent,
     ProductsCreateComponent,
+    ProductsSaleComponent,
   ],
   imports: [
     CommonModule,
@@ -31,7 +34,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatIconModule,
     MatSelectModule,
     SharedModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule,
   ],
   providers: [
     {

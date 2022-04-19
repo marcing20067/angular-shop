@@ -1,0 +1,18 @@
+<section class="wrapper" *ngIf="productsSale$ | async as productsSale">
+  <mat-card class="mat-card" *ngFor="let p of productsSale">
+    <div class="container">
+      <mat-card-title-group>
+        <mat-card-title>{{ p.name }}</mat-card-title>
+      </mat-card-title-group>
+      <mat-card-content>
+        <p>
+          Sprzedano (szt.): <span class="mat-body-strong">{{ p.price }}</span>
+        </p>
+        <p>
+          Cena (zł): <span class="mat-body-strong">{{ p.price * p.soldQuantity | currency: '' : '' }}zł</span>
+        </p>
+      </mat-card-content>
+    </div>
+    <img mat-card-lg-image class="mat-card-image" [src]="p.imageUrl">
+  </mat-card>
+</section>
