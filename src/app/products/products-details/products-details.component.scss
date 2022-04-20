@@ -1,26 +1,27 @@
-@import '../../shared/styles/fit-loader-containers';
+@import "../../shared/styles/fit-loader-containers";
 
 .image {
   width: 100%;
 }
 
 .buttons {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.add-container {
-  display: flex;
-  align-items: flex-start;
+.add {
+  margin-bottom: 16px;
 }
 
 .quantity-field {
   width: 75px;
-  margin-left: 16px;
+  margin-right: 16px;
 }
 
-.add {
-  flex-grow: 1;
+.quantity {
+  display: flex;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -32,5 +33,13 @@
     width: 35%;
     margin-right: 32px;
     max-width: 500px;
+  }
+
+  .buttons {
+    flex-direction: row;
+  }
+
+  .add {
+    margin-right: 16px;
   }
 }

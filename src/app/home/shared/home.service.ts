@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, of } from 'rxjs';
-import { Product } from 'src/app/shared/products/product.model';
+import { PRODUCTS } from 'src/app/products/shared/products';
 
 @Injectable({
   providedIn: 'root',
@@ -10,36 +10,9 @@ export class HomeService {
   constructor(private httpClient: HttpClient) {}
 
   getFeaturedProducts() {
-    const products: Product[] = [
-      {
-        id: '3',
-        name: 'Telefon',
-        price: 950.0,
-        imageUrl:
-          'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
-      },
-      {
-        id: '2',
-        name: 'Szczoteczka do zębów',
-        price: 20.0,
-        imageUrl:
-          'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
-      },
-      {
-        id: '3',
-        name: 'Telefon',
-        price: 950.0,
-        imageUrl:
-          'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
-      },
-      {
-        id: '2',
-        name: 'Szczoteczka do zębów',
-        price: 20.0,
-        imageUrl:
-          'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
-      },
-    ];
+    const products = PRODUCTS.filter((p) => {
+      return p.featured === true;
+    })
     return of(products).pipe(delay(300));
   }
 }
