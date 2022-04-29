@@ -31,7 +31,6 @@ import { MatCardModule } from '@angular/material/card';
     ProductsRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule,
     MatSelectModule,
     SharedModule,
     MatPaginatorModule,

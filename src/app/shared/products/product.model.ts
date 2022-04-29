@@ -4,5 +4,6 @@ export interface Product {
   price: number;
   imageUrl: string;
   maxQuantity: number;
-  featured: boolean
+  featured: boolean;
+  category: string;
 }

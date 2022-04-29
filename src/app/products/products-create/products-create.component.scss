@@ -1,1 +1,33 @@
-@import '../../shared/styles/fit-loader-containers';
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@import "../../shared/styles/fit-loader-containers";
+@import "../../shared/styles/theme";
+
+$primary-palette: map.get($angular-shop-theme, "primary");
+$primary-color: mat.get-color-from-palette($primary-palette, "default");
+
+$preview-size: 100px;
+
+.file {
+  margin-bottom: 16px;
+
+  &-input {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  &-error {
+    margin-top: 12px;
+  }
+
+  &-preview {
+    width: $preview-size;
+    height: $preview-size;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 16px;
+  }
+}

@@ -8,6 +8,7 @@ export const PRODUCTS: Product[] = [
     imageUrl: 'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
     maxQuantity: 210,
     featured: false,
+    category: 'Technologia'
   },
   {
     id: '2',
@@ -16,6 +17,7 @@ export const PRODUCTS: Product[] = [
     imageUrl: 'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
     maxQuantity: 70,
     featured: true,
+    category: 'Technologia'
   },
   {
     id: '3',
@@ -24,6 +26,7 @@ export const PRODUCTS: Product[] = [
     imageUrl: 'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
     maxQuantity: 250,
     featured: true,
+    category: 'Technologia'
   },
   {
     id: '2',
@@ -32,6 +35,7 @@ export const PRODUCTS: Product[] = [
     imageUrl: 'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
     maxQuantity: 80,
     featured: false,
+    category: 'Technologia'
   },
   {
     id: '1',
@@ -40,5 +44,6 @@ export const PRODUCTS: Product[] = [
     imageUrl: 'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
     maxQuantity: 2500,
     featured: false,
+    category: 'Technologia'
   },
 ];

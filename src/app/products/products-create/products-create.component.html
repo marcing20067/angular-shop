@@ -2,13 +2,32 @@
   <h2>Dodawanie produkt</h2>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+    <div class="file">
+      <input class="file-input" accept="image/png, image/jpeg, image/jpeg" type="file" (change)="onImageUpload($event)"
+        #file>
+      <img class="file-preview" [src]="imagePreview" alt="Zawartość załadowana przez użytkownika" *ngIf="imagePreview">
+      <button class="file-button" mat-stroked-button type="button" color="primary" (click)="file.click()">Załaduj
+        zdjęcie produktu
+      </button>
+      <mat-error class="file-error" *ngIf="productForm.get('image')?.errors && productForm.get('image')!.errors!['invalidFileType']">
+        Nieprawidłowe rozszerzenie pliku.
+      </mat-error>
+    </div>
     <p>
       <mat-form-field>
         <mat-label>Nazwa produktu</mat-label>
         <input matInput formControlName="name">
-        <mat-icon matSuffix>name</mat-icon>
         <mat-error *ngIf="productForm.get('name')?.errors as nameErrors">
           {{ nameErrors | getMessageError }}
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>Maksymalna ilość</mat-label>
+        <input formControlName="maxQuantity" type="number" matInput>
+        <mat-error *ngIf="productForm.get('maxQuantity')?.errors as maxQuantityErrors">
+          {{ maxQuantityErrors | getMessageError }}
         </mat-error>
       </mat-form-field>
     </p>
@@ -27,7 +46,6 @@
       <mat-form-field>
         <mat-label>Cena</mat-label>
         <input formControlName="price" type="number" matInput>
-        <mat-icon matSuffix>price</mat-icon>
         <mat-error *ngIf="productForm.get('price')?.errors as priceErrors">
           {{ priceErrors | getMessageError }}
         </mat-error>
@@ -35,5 +53,4 @@
     </p>
     <button mat-raised-button color="primary" [disabled]="productForm.invalid">Dodaj</button>
   </form>
-
 </section>

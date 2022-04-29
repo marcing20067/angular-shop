@@ -13,8 +13,8 @@ export class ProductsService {
 
   constructor(private http: HttpClient) {}
 
-  postProduct(product: Product) {
-    return of({}).pipe(delay(300));
+  postProduct(productData: FormData) {
+    return this.http.post('http://localhost:3000/products', productData);
   }
 
   getProductsListener() {

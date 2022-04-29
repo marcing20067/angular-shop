@@ -6,6 +6,7 @@ import { ValidationErrors } from '@angular/forms';
 })
 export class GetMessageErrorPipe implements PipeTransform {
   transform(value: ValidationErrors): string {
+    console.log(value);
     if (value['required']) {
       return 'To pole jest wymagane.';
     }
