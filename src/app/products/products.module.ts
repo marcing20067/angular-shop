@@ -35,6 +35,7 @@ import { MatCardModule } from '@angular/material/card';
     SharedModule,
     MatPaginatorModule,
     MatCardModule,
+    MatIconModule
   ],
   providers: [
     {

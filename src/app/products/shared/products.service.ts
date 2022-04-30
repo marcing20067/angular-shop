@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, delay, of } from 'rxjs';
+import { BehaviorSubject, delay, of, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Product } from '../../shared/products/product.model';
 import { ProductSale } from './product-sale.model';
 import { PRODUCTS } from './products';
@@ -14,7 +15,7 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   postProduct(productData: FormData) {
-    return this.http.post('http://localhost:3000/products', productData);
+    return this.http.post(environment.BACKEND_URL + 'products', productData);
   }
 
   getProductsListener() {
@@ -25,30 +26,26 @@ export class ProductsService {
     paginatorObj?: { page: number; itemsPerPage: number },
     nameQuery?: string
   ) {
-    let products = [...PRODUCTS];
-    let length = PRODUCTS.length;
-    if (nameQuery) {
-      products = products.filter((p) =>
-        p.name.toLowerCase().includes(nameQuery.toLowerCase())
+    return this.http
+      .get<{ length: number; products: Product[] }>(
+        environment.BACKEND_URL + 'products',
+        {
+          params: {
+            name: nameQuery || '',
+            page: paginatorObj?.page || 0,
+            itemsPerPage: paginatorObj?.itemsPerPage || 0,
+          },
+        }
+      )
+      .pipe(
+        tap(({ products }) => {
+          this.products$.next(products);
+        })
       );
-      length = products.length;
-    }
-    if (paginatorObj) {
-      const { page, itemsPerPage } = paginatorObj;
-      const start = page * itemsPerPage;
-      const end = start + itemsPerPage;
-      products = products.slice(start, end);
-      if (!nameQuery) {
-        length = PRODUCTS.length;
-      }
-    }
-    this.products$.next(products);
-    return of({ length, products }).pipe(delay(300));
   }
 
   getProduct(id: string) {
-    const findedProduct = PRODUCTS.find((p) => p.id === id) || PRODUCTS[0];
-    return of(findedProduct).pipe(delay(300));
+    return this.http.get<Product>(environment.BACKEND_URL + 'products/' + id);
   }
 
   getProductsSale() {

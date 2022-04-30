@@ -78,7 +78,8 @@
               "browserTarget": "angular-shop:build:production"
             },
             "development": {
-              "browserTarget": "angular-shop:build:development"
+              "browserTarget": "angular-shop:build:development",
+              "proxyConfig": "src/proxy.conf.js"
             }
           },
           "defaultConfiguration": "development"
