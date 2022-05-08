@@ -7,7 +7,7 @@
       <p>
         Cena: <span class="mat-body-strong">{{ c.price * c.quantity | currency: '' : '' }}zł</span>
       </p>
-      
+
       <mat-form-field class="quantity-form">
         <mat-label>Ilość</mat-label>
         <input type="number" matInput [formControl]="quantityControl" (blur)="onBlur()">
@@ -17,5 +17,5 @@
       <button mat-button (click)="onDelete()">Usuń</button>
     </mat-card-actions>
   </div>
-  <img mat-card-lg-image class="mat-card-image" [src]="c.imageUrl">
+  <img class="image" [src]="c.imageUrl">
 </mat-card>

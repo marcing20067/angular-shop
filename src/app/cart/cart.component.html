@@ -17,6 +17,6 @@
         Łączny koszt: <span class="mat-body-strong">{{ cart.price | currency: '' : ''}}zł</span>
       </p>
     </div>
-    <button mat-raised-button color="accent">Zapłać</button>
+    <button mat-raised-button color="accent" (click)="onPay()">Zapłać</button>
   </ng-container>
 </section>

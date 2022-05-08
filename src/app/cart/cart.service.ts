@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Cart, CartItem } from './cart.model';
 
 @Injectable({
@@ -10,7 +12,7 @@ export class CartService {
   private cart$ = new BehaviorSubject<Cart>(this.DEFAULT_CART);
   private cart: Cart = this.DEFAULT_CART;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.init();
   }
 
@@ -20,7 +22,7 @@ export class CartService {
 
   addItem(cartItem: CartItem) {
     const duplicateIndex = this.cart.items.findIndex(
-      (c) => c.id === cartItem.id
+      (c) => c._id === cartItem._id
     );
     if (duplicateIndex === -1) {
       const updatedCart: Cart = {
@@ -40,7 +42,7 @@ export class CartService {
 
   deleteItem(cartItem: CartItem) {
     const updatedCartItems = this.cart.items.filter(
-      (i) => i.id !== cartItem.id
+      (i) => i._id !== cartItem._id
     );
     const updatedCart: Cart = {
       items: updatedCartItems,
@@ -51,7 +53,7 @@ export class CartService {
   }
 
   editItem(newItem: CartItem) {
-    const oldItemIndex = this.cart.items.findIndex((i) => i.id === newItem.id);
+    const oldItemIndex = this.cart.items.findIndex((i) => i._id === newItem._id);
     const oldCartItem = this.cart.items[oldItemIndex];
     const updatedItems = [...this.cart.items];
 
@@ -65,6 +67,13 @@ export class CartService {
         newItem.price * newItem.quantity,
     };
     this.updateCart(updatedCart);
+  }
+
+  pay() {
+    return this.http.post<{ url: string }>(
+      environment.BACKEND_URL + 'account/pay',
+      { cart: this.cart }
+    );
   }
 
   private init() {

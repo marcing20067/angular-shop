@@ -8,7 +8,7 @@ import { CartService } from './cart.service';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  cart$ = this.cartService.getCart()
+  cart$ = this.cartService.getCart();
 
   constructor(private cartService: CartService) {}
 
@@ -18,5 +18,11 @@ export class CartComponent {
 
   onEdit(newCartItem: CartItem) {
     this.cartService.editItem(newCartItem);
+  }
+
+  onPay() {
+    this.cartService.pay().subscribe(({ url }) => {
+      window.location.href = url;
+    });
   }
 }

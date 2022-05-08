@@ -1,8 +1,11 @@
 .mat-card {
-  padding: 0;
   overflow: hidden;
+  max-width: 650px;
+  height: 225px;
+  padding: 0;
   display: flex;
   justify-content: space-between;
+  align-items: stretch;
 }
 
 .quantity-form {
@@ -10,7 +13,10 @@
   width: 80px;
 }
 
-.mat-card-image {
+.image {
+  display: block;
+  height: 100%;
+  width: clamp(200px, 500px, 50%);
   object-fit: cover;
 }
 
