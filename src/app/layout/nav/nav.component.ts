@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { map } from 'rxjs';
+import { map, of, switchMap } from 'rxjs';
 import { CartService } from 'src/app/cart/cart.service';
+import { TokenService } from 'src/app/shared/token/token.service';
 
 @Component({
   selector: 'app-nav',
@@ -18,5 +19,14 @@ export class NavComponent {
     })
   );
 
-  constructor(private cartService: CartService) {}
+  isAuth$ = this.tokenService.getTokenListener().pipe(
+    switchMap((token) => {
+      return of(!!token);
+    })
+  );
+
+  constructor(
+    private cartService: CartService,
+    private tokenService: TokenService
+  ) {}
 }

@@ -31,7 +31,6 @@ export class ProductsSearchComponent {
   onSubmit() {
     this.page = 0;
     this.savedText = this.searchForm.value.text;
-    console.log(this.savedText);
     this.getProducts().pipe(take(1)).subscribe()
   }
 

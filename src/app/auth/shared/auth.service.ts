@@ -11,7 +11,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(user: User) {
-    const response = {};
+    const response = { accessToken: ''};
     return of(response);
   }
 
