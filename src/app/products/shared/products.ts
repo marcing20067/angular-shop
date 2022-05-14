@@ -6,7 +6,6 @@ export const PRODUCTS: Product[] = [
     name: 'Pralka',
     price: 200.0,
     imageUrl: 'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
-    maxQuantity: 210,
     featured: false,
     category: 'Technologia'
   },
@@ -15,7 +14,6 @@ export const PRODUCTS: Product[] = [
     name: 'Suszarka do włosów',
     price: 20.0,
     imageUrl: 'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
-    maxQuantity: 70,
     featured: true,
     category: 'Technologia'
   },
@@ -24,7 +22,6 @@ export const PRODUCTS: Product[] = [
     name: 'Telefon',
     price: 950.0,
     imageUrl: 'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
-    maxQuantity: 250,
     featured: true,
     category: 'Technologia'
   },
@@ -33,7 +30,6 @@ export const PRODUCTS: Product[] = [
     name: 'Szczoteczka do zębów',
     price: 20.0,
     imageUrl: 'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
-    maxQuantity: 80,
     featured: false,
     category: 'Technologia'
   },
@@ -42,7 +38,6 @@ export const PRODUCTS: Product[] = [
     name: 'Pluszowy miś',
     price: 60.0,
     imageUrl: 'https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg',
-    maxQuantity: 2500,
     featured: false,
     category: 'Technologia'
   },

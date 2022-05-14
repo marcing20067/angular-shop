@@ -24,15 +24,6 @@
     </p>
     <p>
       <mat-form-field>
-        <mat-label>Maksymalna ilość</mat-label>
-        <input formControlName="maxQuantity" type="number" matInput>
-        <mat-error *ngIf="productForm.get('maxQuantity')?.errors as maxQuantityErrors">
-          {{ maxQuantityErrors | getMessageError }}
-        </mat-error>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field>
         <mat-label>Kategoria</mat-label>
         <mat-select formControlName="category">
           <mat-option [value]="category" *ngFor="let category of categories">{{ category | titlecase }}</mat-option>

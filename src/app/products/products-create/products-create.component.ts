@@ -16,7 +16,6 @@ export class ProductsCreateComponent {
     category: ['', Validators.required],
     price: ['', [Validators.required, Validators.min(1)]],
     image: [null, Validators.required],
-    maxQuantity: [null, Validators.required],
   });
   imagePreview = '';
   categories = ['kategoria1', 'kategoria2'];
@@ -33,7 +32,6 @@ export class ProductsCreateComponent {
     const productData = new FormData();
     productData.append('name', newProduct.name);
     productData.append('price', newProduct.price);
-    productData.append('maxQuantity', newProduct.maxQuantity);
     productData.append('featured', 'false');
     productData.append('image', newProduct.image, newProduct.name);
     productData.append('category', newProduct.category);

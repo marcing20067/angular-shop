@@ -10,9 +10,8 @@
         <div class="quantity">
           <mat-form-field class="quantity-field">
             <mat-label>Ilość</mat-label>
-            <input type="number" [max]="p.maxQuantity" matInput value="1" #quantity>
+            <input type="number" matInput value="1" #quantity>
           </mat-form-field>
-          <p>z {{ p.maxQuantity }}</p>
         </div>
         <div class="buttons">
           <button (click)="onAdd(+quantity.value)" mat-raised-button color="primary" class="add">Dodaj do

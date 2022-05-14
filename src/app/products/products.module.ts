@@ -15,7 +15,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { SharedModule } from '../shared/shared.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ProductsSaleComponent } from './products-sale/products-sale.component';
 import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
@@ -23,7 +22,6 @@ import { MatCardModule } from '@angular/material/card';
     ProductsSearchComponent,
     ProductsDetailsComponent,
     ProductsCreateComponent,
-    ProductsSaleComponent,
   ],
   imports: [
     CommonModule,
