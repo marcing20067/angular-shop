@@ -1,10 +1,8 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, delay, of, tap } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../../shared/products/product.model';
-import { ProductSale } from './product-sale.model';
-import { PRODUCTS } from './products';
 
 @Injectable({
   providedIn: 'root',
@@ -46,13 +44,5 @@ export class ProductsService {
 
   getProduct(id: string) {
     return this.http.get<Product>(environment.BACKEND_URL + 'products/' + id);
-  }
-
-  getProductsSale() {
-    const soldQuantity = [10, 20, 100, 73, 12];
-    const response: ProductSale[] = PRODUCTS.map((p, i) => {
-      return { ...p, soldQuantity: soldQuantity[i] };
-    });
-    return of(response).pipe(delay(300));
   }
 }
