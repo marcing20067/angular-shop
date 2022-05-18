@@ -1,6 +1,5 @@
-<section class="wrapper auth-login">
+<section class="wrapper admin-login">
   <h2>Logowanie</h2>
-
 
   <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
     <p>
@@ -21,7 +20,7 @@
 
     <div>
       <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Zaloguj</button>
-      <a mat-button routerLink="/auth/signup">Stwórz konto</a>
+      <a mat-button routerLink="/admin/signup">Stwórz konto</a>
     </div>
   </form>
 </section>

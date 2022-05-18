@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { map, of, switchMap } from 'rxjs';
+import { map } from 'rxjs';
 import { CartService } from 'src/app/cart/cart.service';
 import { TokenService } from 'src/app/shared/token/token.service';
 
@@ -16,12 +16,6 @@ export class NavComponent {
       }
 
       return cart.quantity > 99 ? '99+' : cart.quantity;
-    })
-  );
-
-  isAuth$ = this.tokenService.getTokenListener().pipe(
-    switchMap((token) => {
-      return of(!!token);
     })
   );
 

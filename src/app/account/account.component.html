@@ -1,9 +1,0 @@
-<section class="wrapper">
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <div *ngIf="account$ | async as account">
-    <h2>Moje konto</h2>
-    <p>Email: <span class="mat-body-strong">{{ account.email }}</span></p>
-    <p>Hasło: <span class="mat-body-strong">{{ account.password }}</span></p>
-    <button mat-stroked-button color="accent">Zresetuj hasło</button>
-  </div>
-</section>

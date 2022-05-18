@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AuthRoutingModule } from './auth-routing.module';
-import { AuthLoginComponent } from './auth-login/auth-login.component';
-import { AuthSignupComponent } from './auth-signup/auth-signup.component';
+import { AdminRoutingModule } from './admin-routing.module';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { AdminComponent } from './admin.component';
 
 @NgModule({
-  declarations: [AuthLoginComponent, AuthSignupComponent],
+  declarations: [AdminLoginComponent, AdminComponent],
   imports: [
     CommonModule,
-    AuthRoutingModule,
+    AdminRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
@@ -28,4 +28,4 @@ import { SharedModule } from '../shared/shared.module';
     },
   ],
 })
-export class AuthModule {}
+export class AdminModule {}

@@ -15,7 +15,7 @@ export class TokenGuard implements CanActivate {
         if (token) {
           return of(true);
         }
-        return of(this.router.createUrlTree(['/auth/login']));
+        return of(this.router.createUrlTree(['/admin/login']));
       })
     );
   }

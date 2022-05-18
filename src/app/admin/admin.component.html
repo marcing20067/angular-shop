@@ -1,0 +1,8 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<section class="wrapper" *ngIf="account$ | async as account">
+  <div>
+    <h2>Moje konto</h2>
+    <p>Username: <span class="mat-body-strong">{{ account.username }}</span></p>
+    <p>Hasło: <span class="mat-body-strong">{{ account.password }}</span></p>
+  </div>
+</section>
