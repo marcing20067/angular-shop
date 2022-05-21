@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { take } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { CartItem } from './cart.model';
 import { CartService } from './cart.service';
 

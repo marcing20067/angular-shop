@@ -9,7 +9,8 @@
       <button class="file-button" mat-stroked-button type="button" color="primary" (click)="file.click()">Załaduj
         zdjęcie produktu
       </button>
-      <mat-error class="file-error" *ngIf="productForm.get('image')?.errors && productForm.get('image')!.errors!['invalidFileType']">
+      <mat-error class="file-error"
+        *ngIf="productForm.get('image')?.errors && productForm.get('image')!.errors!['invalidFileType']">
         Nieprawidłowe rozszerzenie pliku.
       </mat-error>
     </div>
@@ -42,6 +43,11 @@
         </mat-error>
       </mat-form-field>
     </p>
+
+    <div>
+      <mat-checkbox class="checkbox" formControlName="featured" color="primary">Polecany</mat-checkbox>
+    </div>
+
     <button mat-raised-button color="primary" [disabled]="productForm.invalid">Dodaj</button>
   </form>
 </section>

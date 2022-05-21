@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { take } from 'rxjs';
+import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 import { ProductsService } from '../shared/products.service';
 import { IMAGE_EXTS } from './image-extenstions';
 
@@ -16,13 +17,15 @@ export class ProductsCreateComponent {
     category: ['', Validators.required],
     price: ['', [Validators.required, Validators.min(1)]],
     image: [null, Validators.required],
+    featured: [false, Validators.required]
   });
   imagePreview = '';
   categories = ['kategoria1', 'kategoria2'];
 
   constructor(
     private fb: FormBuilder,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private router: Router
   ) {}
 
   onSubmit() {
@@ -32,7 +35,7 @@ export class ProductsCreateComponent {
     const productData = new FormData();
     productData.append('name', newProduct.name);
     productData.append('price', newProduct.price);
-    productData.append('featured', 'false');
+    productData.append('featured', newProduct.featured + '');
     productData.append('image', newProduct.image, newProduct.name);
     productData.append('category', newProduct.category);
 
@@ -41,6 +44,7 @@ export class ProductsCreateComponent {
       .pipe(take(1))
       .subscribe(() => {
         this.isLoading = false;
+        this.router.navigate(['/admin'])
       });
   }
 

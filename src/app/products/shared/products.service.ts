@@ -12,7 +12,7 @@ export class ProductsService {
 
   constructor(private http: HttpClient) {}
 
-  postProduct(productData: FormData) {
+  postProduct(productData: FormData) {  
     return this.http.post(environment.BACKEND_URL + 'products', productData);
   }
 

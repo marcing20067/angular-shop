@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { take } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { TokenService } from 'src/app/shared/token/token.service';
-import { AdminValidators } from '../shared/admin-validators';
 import { AdminService } from '../shared/admin.service';
 
 @Component({
@@ -13,8 +12,8 @@ import { AdminService } from '../shared/admin.service';
 })
 export class AdminLoginComponent {
   loginForm = this.fb.group({
-    email: ['', AdminValidators.email],
-    password: ['', AdminValidators.password],
+    username: ['', Validators.required],
+    password: ['', [Validators.required, Validators.minLength(8)]],
   });
 
   constructor(
@@ -29,9 +28,9 @@ export class AdminLoginComponent {
     this.adminService
       .login(loginData)
       .pipe(take(1))
-      .subscribe(({ accessToken }) => {
-        this.tokenService.setToken(accessToken);
-        this.router.navigate(['/products']);
+      .subscribe((data) => {
+        this.tokenService.setTokenData(data);
+        this.router.navigate(['/admin']);
       });
   }
 }

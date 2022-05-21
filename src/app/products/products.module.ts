@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { SharedModule } from '../shared/shared.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatCardModule } from '@angular/material/card';
     SharedModule,
     MatPaginatorModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule,
   ],
   providers: [
     {

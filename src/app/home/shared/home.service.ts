@@ -1,18 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, of } from 'rxjs';
-import { PRODUCTS } from 'src/app/products/shared/products';
+import { map } from 'rxjs/operators';
+import { Product } from 'src/app/shared/products/product.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HomeService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   getFeaturedProducts() {
-    const products = PRODUCTS.filter((p) => {
-      return p.featured === true;
-    })
-    return of(products).pipe(delay(300));
+    return this.http
+      .get<{ length: number; products: Product[] }>(
+        environment.BACKEND_URL + 'products',
+        {
+          params: {
+            featured: 'true',
+          },
+        }
+      )
+      .pipe(
+        map(({ products }) => {
+          return products;
+        })
+      );
   }
 }

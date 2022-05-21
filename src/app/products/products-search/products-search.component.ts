@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
-import { take, tap } from 'rxjs';
+import { take, tap } from 'rxjs/operators';
 import { ProductsService } from '../shared/products.service';
 
 @Component({

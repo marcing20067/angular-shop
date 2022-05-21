@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, UrlTree } from '@angular/router';
-import { Observable, of, switchMap, take } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { switchMap, take } from 'rxjs/operators';
 import { TokenService } from './token.service';
 
 @Injectable({
@@ -9,10 +10,10 @@ import { TokenService } from './token.service';
 export class TokenGuard implements CanActivate {
   constructor(private tokenService: TokenService, private router: Router) {}
   canActivate(): Observable<boolean | UrlTree> {
-    return this.tokenService.getTokenListener().pipe(
+  return this.tokenService.checkValidity().pipe(
       take(1),
-      switchMap((token) => {
-        if (token) {
+      switchMap((isAuth) => {
+        if (isAuth) {
           return of(true);
         }
         return of(this.router.createUrlTree(['/admin/login']));

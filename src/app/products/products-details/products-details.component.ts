@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { take } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { CartService } from 'src/app/cart/cart.service';
 import { Product } from 'src/app/shared/products/product.model';
 import { ProductsService } from '../shared/products.service';
