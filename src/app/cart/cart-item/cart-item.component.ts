@@ -8,6 +8,7 @@ import {
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GetMessageErrorPipe } from 'src/app/shared/get-message-error/get-message-error.pipe';
+import { environment } from 'src/environments/environment';
 import { CartItem } from '../cart.model';
 
 @Component({
@@ -17,6 +18,7 @@ import { CartItem } from '../cart.model';
   providers: [GetMessageErrorPipe],
 })
 export class CartItemComponent implements OnInit {
+  BACKEND_URL = environment.BACKEND_URL;
   quantityControl = this.fb.control('', [Validators.min(1)]);
   oldValue!: number;
 
