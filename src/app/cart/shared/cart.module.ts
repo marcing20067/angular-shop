@@ -13,7 +13,7 @@ import {
 } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [CartComponent, CartItemComponent],
@@ -26,7 +26,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatSnackBarModule,
+    SharedModule
   ],
   providers: [
     {

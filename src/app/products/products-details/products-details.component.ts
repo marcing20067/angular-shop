@@ -5,6 +5,7 @@ import { CartService } from 'src/app/cart/shared/cart.service';
 import { Product } from 'src/app/shared/products/product.model';
 import { environment } from 'src/environments/environment';
 import { ProductsService } from '../shared/products.service';
+import { CreateQuantityControl } from '../shared/quantity-control';
 
 @Component({
   selector: 'app-products-details',
@@ -13,6 +14,7 @@ import { ProductsService } from '../shared/products.service';
 })
 export class ProductsDetailsComponent implements OnInit {
   BACKEND_URL = environment.BACKEND_URL;
+  quantityControl = CreateQuantityControl();
   isLoading = true;
   id = this.route.snapshot.params['id'];
   product!: Product;
