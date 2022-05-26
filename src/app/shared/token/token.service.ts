@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, of, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, of, switchMap, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { TokenData } from './token-data.model';
 
@@ -9,7 +9,7 @@ import { TokenData } from './token-data.model';
 })
 export class TokenService {
   private tokenData$ = new BehaviorSubject<TokenData | null>(null);
-  tokenData!: TokenData;
+  tokenData: TokenData | null = null;
   constructor(private http: HttpClient) {
     const tokenData = JSON.parse(localStorage.getItem('tokenData') || 'null');
     this.updateTokenData(tokenData);
@@ -27,12 +27,6 @@ export class TokenService {
     tokenData.accessExpiresIn = now + tokenData.accessExpiresIn;
     tokenData.refreshExpiresIn = now + tokenData.refreshExpiresIn;
     this.updateTokenData(tokenData);
-  }
-
-  updateTokenData(data: TokenData) {
-    localStorage.setItem('tokenData', JSON.stringify(data));
-    this.tokenData$.next(data);
-    this.tokenData = data;
   }
 
   checkValidity() {
@@ -58,6 +52,10 @@ export class TokenService {
     return this.postRefresh().pipe(
       switchMap(() => {
         return of(true);
+      }),
+      catchError(() => {
+        this.updateTokenData(null);
+        return of(false);
       })
     );
   }
@@ -70,5 +68,11 @@ export class TokenService {
           this.setTokenData(tokenData);
         })
       );
+  }
+
+  private updateTokenData(data: TokenData | null) {
+    localStorage.setItem('tokenData', JSON.stringify(data));
+    this.tokenData$.next(data);
+    this.tokenData = data;
   }
 }

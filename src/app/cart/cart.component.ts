@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { CartItem } from './cart.model';
-import { CartService } from './cart.service';
+import { CartItem } from './shared/cart.model';
+import { CartService } from './shared/cart.service';
 
 @Component({
   selector: 'app-cart',

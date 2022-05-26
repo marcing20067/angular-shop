@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'cart',
-    loadChildren: () => import('./cart/cart.module').then((m) => m.CartModule),
+    loadChildren: () => import('./cart/shared/cart.module').then((m) => m.CartModule),
   },
   {
     path: '',

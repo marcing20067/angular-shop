@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs';
-import { CartService } from 'src/app/cart/cart.service';
+import { CartService } from 'src/app/cart/shared/cart.service';
 import { TokenService } from 'src/app/shared/token/token.service';
 
 @Component({

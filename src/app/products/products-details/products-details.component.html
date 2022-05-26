@@ -2,7 +2,7 @@
   <h2>Szczegóły produktu</h2>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <div class="container" *ngIf="!isLoading && product as p">
-    <img class="image" [src]="p.imageUrl" [alt]="p.name">
+    <img class="image" [src]="BACKEND_URL + p.imageUrl" [alt]="p.name">
     <div>
       <h2>{{ p.name }}</h2>
       <p>Cena: {{ p.price | currency: '' : '' }}zł</p>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { CartService } from 'src/app/cart/cart.service';
+import { CartService } from 'src/app/cart/shared/cart.service';
 import { Product } from 'src/app/shared/products/product.model';
+import { environment } from 'src/environments/environment';
 import { ProductsService } from '../shared/products.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { ProductsService } from '../shared/products.service';
   styleUrls: ['./products-details.component.scss'],
 })
 export class ProductsDetailsComponent implements OnInit {
+  BACKEND_URL = environment.BACKEND_URL;
   isLoading = true;
   id = this.route.snapshot.params['id'];
   product!: Product;

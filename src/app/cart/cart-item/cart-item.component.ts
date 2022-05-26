@@ -9,7 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GetMessageErrorPipe } from 'src/app/shared/get-message-error/get-message-error.pipe';
 import { environment } from 'src/environments/environment';
-import { CartItem } from '../cart.model';
+import { CartItem } from '../shared/cart.model';
 
 @Component({
   selector: 'app-cart-item',

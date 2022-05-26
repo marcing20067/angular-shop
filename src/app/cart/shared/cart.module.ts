@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CartRoutingModule } from './cart-routing.module';
-import { CartComponent } from './cart.component';
+import { CartRoutingModule } from '../cart-routing.module';
+import { CartComponent } from '../cart.component';
 import { MatCardModule } from '@angular/material/card';
-import { CartItemComponent } from './cart-item/cart-item.component';
+import { CartItemComponent } from '../cart-item/cart-item.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import {
