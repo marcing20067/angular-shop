@@ -9,7 +9,7 @@
 - angular
 - angular material
 - html
-- scss,
+- scss
 - typescript
 
 ## Backend repo
