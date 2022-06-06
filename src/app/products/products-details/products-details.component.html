@@ -16,7 +16,7 @@
         <div class="buttons">
           <button (click)="onAdd(+quantityControl.value)" mat-raised-button color="primary" class="add" [disabled]="quantityControl.invalid">Dodaj do
             koszyka</button>
-          <button mat-raised-button color="accent" [disabled]="quantityControl.invalid">Kup teraz</button>
+          <button (click)="onBuyNow()" mat-raised-button color="accent" [disabled]="quantityControl.invalid">Kup teraz</button>
         </div>
       </div>
     </div>

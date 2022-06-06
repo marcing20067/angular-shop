@@ -22,8 +22,6 @@ export class CartComponent {
   }
 
   onPay() {
-    this.cartService.pay().pipe(take(1)).subscribe(({ url }) => {
-      window.location.href = url;
-    });
+    this.cartService.pay().pipe(take(1)).subscribe();
   }
 }

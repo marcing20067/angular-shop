@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { Cart } from 'src/app/cart/shared/cart.model';
 import { CartService } from 'src/app/cart/shared/cart.service';
 import { Product } from 'src/app/shared/products/product.model';
 import { environment } from 'src/environments/environment';
@@ -40,5 +41,15 @@ export class ProductsDetailsComponent implements OnInit {
       ...this.product,
       quantity,
     });
+  }
+
+  onBuyNow() {
+    const cart: Cart = {
+      items: [{ ...this.product, quantity: 1 }],
+      quantity: 1,
+      price: 2500,
+    };
+
+    this.cartService.pay(cart).pipe(take(1)).subscribe();
   }
 }

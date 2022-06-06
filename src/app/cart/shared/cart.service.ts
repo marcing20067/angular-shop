@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Cart, CartItem } from './cart.model';
 
@@ -53,7 +53,9 @@ export class CartService {
   }
 
   editItem(newItem: CartItem) {
-    const oldItemIndex = this.cart.items.findIndex((i) => i._id === newItem._id);
+    const oldItemIndex = this.cart.items.findIndex(
+      (i) => i._id === newItem._id
+    );
     const oldCartItem = this.cart.items[oldItemIndex];
     const updatedItems = [...this.cart.items];
 
@@ -69,11 +71,16 @@ export class CartService {
     this.updateCart(updatedCart);
   }
 
-  pay() {
-    return this.http.post<{ url: string }>(
-      environment.BACKEND_URL + 'account/pay',
-      { cart: this.cart }
-    );
+  pay(cart?: Cart) {
+    return this.http
+      .post<{ url: string }>(environment.BACKEND_URL + 'account/pay', {
+        cart: cart || this.cart,
+      })
+      .pipe(
+        tap(({ url }) => {
+          window.location.href = url;
+        })
+      );
   }
 
   private init() {
